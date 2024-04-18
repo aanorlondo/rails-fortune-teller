@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   post '/predictions/create', to: 'predictions#create'
   post '/predictions/rate', to: 'predictions#rate'
   get '/predictions/list', to: 'predictions#list'
+  get '/predictions/show', to: 'predictions#show'
 end

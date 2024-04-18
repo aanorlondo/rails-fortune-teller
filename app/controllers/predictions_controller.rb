@@ -1,6 +1,6 @@
 class PredictionsController < ApplicationController
   before_action :save_user_information, only: [:create]
-  before_action :load_user_information, only: %i[create rate]
+  before_action :load_user_information, only: %i[create rate show]
 
   # GET /predictions/
   def index
@@ -10,10 +10,16 @@ class PredictionsController < ApplicationController
   def create
     # Call OpenAI API with preset prompt using name, age, and zodiac sign
     @prediction = generate_prediction(@name, @age, @zodiac_sign)
-    render :show
+    session[:prediction] = @prediction
+    redirect_to predictions_show_path
   rescue StandardError => e
     flash.now[:error] = "OpenAPI Error: #{e.message}. Check your API Key and try again."
     render :index
+  end
+
+  # GET /predictions/show
+  def show
+    @prediction = session[:prediction]
   end
 
   # POST /predictions/rate
