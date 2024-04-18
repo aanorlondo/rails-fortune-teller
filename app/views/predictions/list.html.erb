@@ -1,0 +1,23 @@
+<div id="list" class="content">
+  <h2>Prédictions Sauvegardées</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Prédiction</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @predictions.each do |prediction| %>
+        <tr>
+          <td><%= prediction.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+          <td><%= prediction.text %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @predictions, :previous_label => '<', :next_label => '>' %>
+  <div class="isolated_button">
+    <%= button_to 'Retour', root_path, method: :get, class: 'button' %>
+  </div>
+</div>

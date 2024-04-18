@@ -29,6 +29,9 @@ gem 'jbuilder'
 # OpenAI API [https://github.com/alexrudall/ruby-openai]
 gem 'ruby-openai'
 
+# Pagination [https://github.com/mislav/will_paginate]
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 

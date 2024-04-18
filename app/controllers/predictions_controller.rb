@@ -29,6 +29,12 @@ class PredictionsController < ApplicationController
     flash.now[:error] = "Error: #{e.message}. Please try again later."
   end
 
+  # GET /predictions/list
+  def list
+    @predictions = Prediction.paginate(page: params[:page], per_page: 5).order(created_at: :desc)
+    render :list
+  end
+
   private
 
   # OPENAI
@@ -66,7 +72,6 @@ class PredictionsController < ApplicationController
   end
 
   def load_user_information
-    # Load user information from session
     @name = session[:user_name]
     @age = session[:user_age]
     @zodiac_sign = session[:user_zodiac_sign]

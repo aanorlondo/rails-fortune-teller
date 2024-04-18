@@ -1,13 +1,13 @@
-<div class="content">
+<div id="show" class="content">
   <h2>Voici ta Prédiction, <%= @name.capitalize %></h2>
   <div class="prediction-container">
     <p id="prediction"><%= @prediction %></p>
   </div>
   <p>Qu'en penses-tu ?</p>
   <div class="rating-buttons">
-    <%= form_tag(predictions_rate_path, method: :post) do %>
+    <%= form_tag(predictions_rate_path, method: :post, id:"show_form") do %>
       <%= hidden_field_tag :prediction_text, @prediction %>
-      <%= button_tag "Je valide !", type: 'submit', name: 'rating', value: 'positive' %>
+      <%= button_tag "J'aime", type: 'submit', name: 'rating', value: 'positive' %>
       <%= button_tag "Pas top", type: 'submit', name: 'rating', value: 'negative' %>
     <% end %>
   </div>

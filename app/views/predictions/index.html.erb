@@ -1,6 +1,6 @@
-<div class="content">
+<div id="index" class="content">
   <h2>Dis-moi qui tu es:</h2>
-  <%= form_tag url_for(action: 'create'), method: :post, data: {turbo: 'false'} do %>
+  <%= form_tag url_for(action: 'create'), method: :post, id: "index_form", data: {turbo: 'false'} do %>
     <label for="name">Nom:</label>
     <%= text_field_tag :name, nil, required: true %><br>
     <label for="age">Age:</label>
@@ -9,4 +9,7 @@
     <%= select_tag :zodiac_sign, options_for_select(ZODIAC_SIGNS) %><br>
     <%= submit_tag "Découvre ton avenir" %>
   <% end %>
+  <div class="isolated_button">
+    <%= button_to 'Voir les prédictions sauvegardées', predictions_list_path, method: :get, class: 'button' %>
+  </div>
 </div>
