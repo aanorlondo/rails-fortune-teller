@@ -10,5 +10,5 @@ ZODIAC_SIGNS = [
   '♐️ Sagittaire',
   '♑️ Capricorne',
   '♒️ Verseau',
-  '♓️ Poissons'
+  '♓️ Poisson'
 ].freeze
