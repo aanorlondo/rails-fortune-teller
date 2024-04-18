@@ -1,0 +1,14 @@
+<h2>Voici ta Prédiction, <%= @name.capitalize %></h2>
+<p><%= @prediction %></p>
+<br>
+<p>Qu'en penses-tu ?</p>
+<%= form_tag(predictions_rate_path, method: :post) do %>
+  <%= hidden_field_tag :prediction_text, @prediction %>
+  <%= hidden_field_tag :rating, 'positive' %>
+  <%= submit_tag "Je valide !" %>
+<% end %>
+<%= form_tag(predictions_rate_path, method: :post) do %>
+  <%= hidden_field_tag :prediction_text, @prediction %>
+  <%= hidden_field_tag :rating, 'negative' %>
+  <%= submit_tag "Pas top" %>
+<% end %>
