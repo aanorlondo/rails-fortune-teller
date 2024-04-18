@@ -1,5 +1,5 @@
 <h2>Dis-moi qui tu es:</h2>
-<%= form_tag url_for(action: 'create'), method: :post do %>
+<%= form_tag url_for(action: 'create'), method: :post, data: {turbo: 'false'} do %>
   <label for="name">Nom:</label>
   <%= text_field_tag :name, nil, required: true %><br>
   <label for="age">Age:</label>
