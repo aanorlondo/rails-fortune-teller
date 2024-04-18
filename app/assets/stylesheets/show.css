@@ -1,0 +1,29 @@
+/***************
+* PREDICTIONS *
+***************/
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.prediction-container {
+  background-color: #f1f1f1; /* Epic background color */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+}
+
+.rating-buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.rating-buttons form {
+  display: flex; /* Use flexbox to align buttons horizontally */
+  justify-content: center; /* Center the buttons horizontally */
+}
+
+.rating-buttons form button {
+  margin: 0 10px; /* Add space between the buttons */
+}

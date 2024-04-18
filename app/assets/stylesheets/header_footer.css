@@ -1,0 +1,42 @@
+/*********************
+* FOOTER AND HEADER *
+*********************/
+/* Center the header horizontally */
+header {
+  text-align: center;
+  padding: 20px; /* Add some padding for spacing */
+}
+
+/* Center the footer horizontally */
+footer {
+  text-align: center;
+  padding: 20px; /* Add some padding for spacing */
+}
+
+/* Center header and footer content */
+.header-content,
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style header text */
+.header-text {
+  margin-right: 20px; /* Add spacing between text and logo */
+}
+
+/* Style footer text */
+.footer-text {
+  margin-left: 20px; /* Add spacing between text and logo */
+}
+
+/* Style logos */
+.header-logo {
+  width: 50px;
+}
+
+.footer-logo {
+  width: 70px;
+  padding-left: 20px;
+}

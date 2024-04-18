@@ -1,0 +1,30 @@
+/*********
+ * FORMS *
+ *********/
+/* Style the form */
+#index_form,
+#show_form {
+  min-width: 50%;
+  width: 500px; /* Set a max width for the form */
+  padding: 20px; /* Add padding to the form */
+  border: 1px solid #ccc; /* Add a border for visual separation */
+  border-radius: 8px; /* Add border radius for rounded corners */
+  background-color: #f9f9f9; /* Add background color */
+}
+
+/* Style form inputs */
+label {
+  display: block;
+  margin-bottom: 10px; /* Add spacing between labels */
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%; /* Make inputs take up full width */
+  padding: 10px; /* Add padding to inputs */
+  margin-bottom: 20px; /* Add spacing between inputs */
+  border: 1px solid #ccc; /* Add a border for visual separation */
+  border-radius: 4px; /* Add border radius for rounded corners */
+  box-sizing: border-box; /* Ensure padding and border are included in width */
+}

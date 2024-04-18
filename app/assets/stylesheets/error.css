@@ -1,0 +1,18 @@
+/*********
+ * ERROR *
+ *********/
+#error-banner {
+  display: none;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ff6347; /* Red color */
+  color: #fff;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+#error-banner.show {
+  display: block;
+}

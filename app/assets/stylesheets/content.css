@@ -1,0 +1,12 @@
+/***********
+ * CONTENT *
+ ***********/
+
+/* Center the content horizontally and vertically */
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* Add some padding */
+}

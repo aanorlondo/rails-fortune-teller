@@ -1,0 +1,30 @@
+/***********
+ * BUTTONS *
+ ***********/
+.button,
+.rating-buttons form button[type="submit"],
+input[type="submit"] {
+  width: 100%; /* Make submit button take up full width */
+  padding: 10px; /* Add padding to button */
+  background-color: #007bff; /* Set background color */
+  color: #fff; /* Set text color */
+  border: none; /* Remove border */
+  border-radius: 4px; /* Add border radius for rounded corners */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.button:hover,
+.rating-buttons form button[type="submit"]:hover,
+input[type="submit"]:hover {
+  background-color: #08427e;
+}
+
+.button:active,
+.rating-buttons form button[type="submit"]:active,
+input[type="submit"]:active {
+  background-color: #3e8e41;
+}
+
+.isolated_button .button {
+  margin-top: 20px;
+}
