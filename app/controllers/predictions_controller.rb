@@ -11,6 +11,9 @@ class PredictionsController < ApplicationController
     # Call OpenAI API with preset prompt using name, age, and zodiac sign
     @prediction = generate_prediction(@name, @age, @zodiac_sign)
     render :show
+  rescue StandardError => e
+    flash.now[:error] = "OpenAPI Error: #{e.message}. Check your API Key and try again."
+    render :index
   end
 
   # POST /predictions/rate
@@ -22,6 +25,8 @@ class PredictionsController < ApplicationController
       Prediction.create(text: anonymized_prediction_text)
     end
     redirect_to root_path
+  rescue StandardError => e
+    flash.now[:error] = "Error: #{e.message}. Please try again later."
   end
 
   private
