@@ -1,10 +1,12 @@
-<h2>Dis-moi qui tu es:</h2>
-<%= form_tag url_for(action: 'create'), method: :post do %>
-  <label for="name">Nom:</label>
-  <%= text_field_tag :name, nil, required: true %><br>
-  <label for="age">Age:</label>
-  <%= number_field_tag :age, min: 0 %><br>
-  <label for="zodiac_sign">Ton signe du Zodiaque:</label>
-  <%= select_tag :zodiac_sign, options_for_select(ZODIAC_SIGNS) %><br>
-  <%= submit_tag "Découvre ton avenir" %>
-<% end %>
+<div class="content">
+  <h2>Dis-moi qui tu es:</h2>
+  <%= form_tag url_for(action: 'create'), method: :post, data: {turbo: 'false'} do %>
+    <label for="name">Nom:</label>
+    <%= text_field_tag :name, nil, required: true %><br>
+    <label for="age">Age:</label>
+    <%= number_field_tag :age, min: 0 %><br>
+    <label for="zodiac_sign">Ton signe du Zodiaque:</label>
+    <%= select_tag :zodiac_sign, options_for_select(ZODIAC_SIGNS) %><br>
+    <%= submit_tag "Découvre ton avenir" %>
+  <% end %>
+</div>

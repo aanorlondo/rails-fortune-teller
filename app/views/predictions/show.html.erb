@@ -1,14 +1,14 @@
-<h2>Voici ta Prédiction, <%= @name.capitalize %></h2>
-<p><%= @prediction %></p>
-<br>
-<p>Qu'en penses-tu ?</p>
-<%= form_tag(predictions_rate_path, method: :post) do %>
-  <%= hidden_field_tag :prediction_text, @prediction %>
-  <%= hidden_field_tag :rating, 'positive' %>
-  <%= submit_tag "Je valide !" %>
-<% end %>
-<%= form_tag(predictions_rate_path, method: :post) do %>
-  <%= hidden_field_tag :prediction_text, @prediction %>
-  <%= hidden_field_tag :rating, 'negative' %>
-  <%= submit_tag "Pas top" %>
-<% end %>
+<div class="content">
+  <h2>Voici ta Prédiction, <%= @name.capitalize %></h2>
+  <div class="prediction-container">
+    <p id="prediction"><%= @prediction %></p>
+  </div>
+  <p>Qu'en penses-tu ?</p>
+  <div class="rating-buttons">
+    <%= form_tag(predictions_rate_path, method: :post) do %>
+      <%= hidden_field_tag :prediction_text, @prediction %>
+      <%= button_tag "Je valide !", type: 'submit', name: 'rating', value: 'positive' %>
+      <%= button_tag "Pas top", type: 'submit', name: 'rating', value: 'negative' %>
+    <% end %>
+  </div>
+</div>

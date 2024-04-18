@@ -1,3 +1,6 @@
 <footer>
-  <p>Khaled KHEBBEB &copy; - <%= Time.now.year %> Powered by <%= image_tag('ruby_logo.png', id: 'footer_logo', alt: 'Ruby Logo') %></p>
+  <div class="footer-content">
+    <p class="footer-text">Khaled KHEBBEB &copy; <%= Time.now.year %> - Powered by</p>
+    <%= image_tag('ruby_logo.png', id: 'footer_logo', alt: 'Ruby Logo', class: 'footer-logo') %>
+  </div>
 </footer>
