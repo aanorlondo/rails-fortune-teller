@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     errorBanner.classList.add("show");
     setTimeout(() => {
       errorBanner.classList.remove("show");
-    }, 5000); // Hide after 5 seconds
+    }, 8000); // Hide after 8 seconds
   };
 
   // Check if error message is present

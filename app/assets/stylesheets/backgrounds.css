@@ -1,0 +1,10 @@
+/***************
+ * BACKGROUNDS *
+ ***************/
+
+html {
+  background-image: url("background1.jpg");
+  background-size: cover; /* Ensures the background image covers the entire body */
+  background-position: center; /* Centers the background image */
+  background-repeat: no-repeat; /* Prevents the background image from repeating */
+}

@@ -5,9 +5,9 @@
     <%= text_field_tag :name, nil, required: true %><br>
     <label for="age">Age:</label>
     <%= number_field_tag :age, min: 0 %><br>
-    <label for="zodiac_sign">Ton signe du Zodiaque:</label>
+    <label for="zodiac_sign">Ton signe Astro:</label>
     <%= select_tag :zodiac_sign, options_for_select(ZODIAC_SIGNS) %><br>
-    <%= submit_tag "Découvre ton avenir" %>
+    <%= submit_tag "✨ Découvre ton avenir ✨" %>
   <% end %>
   <div class="isolated_button">
     <%= button_to 'Voir les prédictions sauvegardées', predictions_list_path, method: :get, class: 'button' %>

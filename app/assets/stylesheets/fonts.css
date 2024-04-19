@@ -1,0 +1,30 @@
+/*********
+ * FONTS *
+ *********/
+
+.footer-content,
+.content td,
+.content form,
+.content form select,
+.content form input,
+.content .prediction-container,
+.table th,
+.button,
+.rating-buttons form button,
+#error-banner {
+  font-family: "Alegreya", serif;
+}
+
+.content form select,
+.content form input,
+.rating-buttons form button,
+.button {
+  font-size: medium;
+}
+
+.content h2,
+.content h3 {
+  font-family: "Mystery Quest", system-ui;
+  text-shadow: rgb(0, 0, 0) 1px 0 10px;
+  color: antiquewhite;
+}

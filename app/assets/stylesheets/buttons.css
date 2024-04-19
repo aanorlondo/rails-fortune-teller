@@ -6,7 +6,7 @@
 input[type="submit"] {
   width: 100%; /* Make submit button take up full width */
   padding: 10px; /* Add padding to button */
-  background-color: #007bff; /* Set background color */
+  background-color: #08427e;
   color: #fff; /* Set text color */
   border: none; /* Remove border */
   border-radius: 4px; /* Add border radius for rounded corners */
@@ -16,13 +16,17 @@ input[type="submit"] {
 .button:hover,
 .rating-buttons form button[type="submit"]:hover,
 input[type="submit"]:hover {
-  background-color: #08427e;
+  background-color: #374757;
 }
 
 .button:active,
 .rating-buttons form button[type="submit"]:active,
 input[type="submit"]:active {
   background-color: rgb(239, 203, 155);
+}
+
+.rating-buttons form button[type="submit"] {
+  border: 1px solid antiquewhite;
 }
 
 .isolated_button .button {

@@ -5,8 +5,11 @@
 #index_form,
 #show_form {
   min-width: 50%;
-  width: 500px; /* Set a max width for the form */
+  width: 400px; /* Set a max width for the form */
   padding: 20px; /* Add padding to the form */
+}
+
+#index_form {
   border: 1px solid #ccc; /* Add a border for visual separation */
   border-radius: 8px; /* Add border radius for rounded corners */
   background-color: #ede5d2; /* Add background color */
