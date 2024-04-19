@@ -10,3 +10,9 @@
   align-items: center;
   padding: 20px; /* Add some padding */
 }
+
+.content h2 {
+  font-family: "Mystery Quest", system-ui;
+  text-shadow: rgb(0, 0, 0) 1px 0 10px;
+  color: antiquewhite;
+}

@@ -1,6 +1,6 @@
-/*********************
-* FOOTER AND HEADER *
-*********************/
+/*********
+* HEADER *
+**********/
 /* Center the header horizontally */
 header {
   align-content: center;
@@ -10,6 +10,20 @@ header {
   color: antiquewhite;
   text-shadow: rgb(7, 7, 6) 1px 0 10px;
 }
+
+/* Style header text */
+/* .header-text {
+  margin-right: 20px; 
+} */
+
+/* Style logos */
+/* .header-logo {
+  width: 50px;
+} */
+
+/***********
+  * FOOTER  *
+  ***********/
 
 /* Center the footer horizontally */
 footer {
@@ -23,30 +37,23 @@ footer {
   ); /* Black background color with 50% opacity */
 }
 
+/* Style footer text */
+.footer-text {
+  margin-left: 20px; /* Add spacing between text and logo */
+}
+.footer-logo {
+  width: 80px;
+  padding-left: 10px;
+}
+
+/*******************
+ * HEADER & FOOTER *
+ *******************/
+
 /* Center header and footer content */
 .header-content,
 .footer-content {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-/* Style header text */
-.header-textzzz {
-  margin-right: 20px; /* Add spacing between text and logo */
-}
-
-/* Style footer text */
-.footer-text {
-  margin-left: 20px; /* Add spacing between text and logo */
-}
-
-/* Style logos */
-.header-logozzzz {
-  width: 50px;
-}
-
-.footer-logo {
-  width: 70px;
-  padding-left: 20px;
 }
