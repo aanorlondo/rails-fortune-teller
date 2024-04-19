@@ -5,6 +5,7 @@
 header {
   align-content: center;
   padding: 20px; /* Add some padding for spacing */
+  margin-bottom: -60px;
   font-family: "Mystery Quest", system-ui;
   font-size: xx-large;
   color: antiquewhite;

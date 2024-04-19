@@ -16,7 +16,9 @@
       <% end %>
     </tbody>
   </table>
-  <%= will_paginate @predictions, :previous_label => '<', :next_label => '>' %>
+  <div class="pagination">
+    <%= will_paginate @predictions, :previous_label => '<', :next_label => '>' %>
+  </div>
   <div class="isolated_button">
     <%= button_to 'Retour', root_path, method: :get, class: 'button' %>
   </div>

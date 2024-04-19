@@ -74,7 +74,7 @@ class PredictionsController < ApplicationController
   def save_user_information
     session[:user_name] = params[:name]
     session[:user_age] = params[:age]
-    session[:user_zodiac_sign] = params[:zodiac_sign]
+    session[:user_zodiac_sign] = params[:zodiac_sign].split(' ').first
   end
 
   def load_user_information
