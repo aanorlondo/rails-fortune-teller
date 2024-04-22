@@ -5,8 +5,7 @@ import "controllers";
 /******************
  * DISPLAY ERRORS *
  ******************/
-
-document.addEventListener("DOMContentLoaded", function () {
+function displayError() {
   const errorBanner = document.getElementById("error-banner");
   const errorMessage = document.getElementById("error-message");
 
@@ -24,4 +23,26 @@ document.addEventListener("DOMContentLoaded", function () {
     // Display error message
     showErrorBanner(error);
   }
+}
+
+/*****************
+ * ALREADY RATED *
+ *****************/
+function disableRatingButtonsWhenAlreadyRated() {
+  const message = "Hey! Tu as déjà noté cette prediction ;)";
+  const likeButton = document.querySelector("button[value='positive']");
+  likeButton.addEventListener("mouseover", function (event) {
+    if (event.target.disabled) {
+      event.target.style.cursor = "not-allowed";
+      event.target.title = message;
+    }
+  });
+}
+
+/**************
+ * CONTROLLER *
+ **************/
+document.addEventListener("DOMContentLoaded", function () {
+  displayError();
+  disableRatingButtonsWhenAlreadyRated();
 });

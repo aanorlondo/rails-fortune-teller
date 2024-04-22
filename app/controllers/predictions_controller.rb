@@ -2,40 +2,52 @@ class PredictionsController < ApplicationController
   before_action :save_user_information, only: [:create]
   before_action :load_user_information, only: %i[create rate show]
 
-  # GET /predictions/
+  # /*********************
+  #  * GET /PREDICTIONS/ *
+  #  *********************/
   def index
   end
 
-  # POST /predictions/
+  # /**********************
+  #  * POST /PREDICTIONS/ *
+  #  **********************/
   def create
     # Call OpenAI API with preset prompt using name, age, and zodiac sign
     @prediction = generate_prediction(@name, @age, @zodiac_sign)
     session[:prediction] = @prediction
+    session[:rated_positive] = false
     redirect_to predictions_show_path
   rescue StandardError => e
     flash.now[:error] = "OpenAPI Error: #{e.message}. Check your API Key and try again."
     render :index
   end
 
-  # GET /predictions/show
+  # /*************************
+  #  * GET /PREDICTIONS/SHOW *
+  #  *************************/
   def show
     @prediction = session[:prediction]
   end
 
-  # POST /predictions/rate
+  # /****************************
+  #  * # POST /PREDICTIONS/RATE *
+  #  ****************************/
   def rate
     prediction_text = params[:prediction_text]
     rating = params[:rating]
-    if rating == 'positive'
+    if rating == 'positive' && !session[:rated_positive]
       anonymized_prediction_text = anonymize_prediction(prediction_text)
       Prediction.create(text: anonymized_prediction_text)
+      session[:rated_positive] = true
     end
     redirect_to root_path
   rescue StandardError => e
     flash.now[:error] = "Error: #{e.message}. Please try again later."
   end
 
-  # GET /predictions/list
+  # /***************************
+  #  * # GET /PREDICTIONS/LIST *
+  #  ***************************/
   def list
     @predictions = Prediction.paginate(page: params[:page], per_page: 5).order(created_at: :desc)
     render :list
@@ -43,15 +55,17 @@ class PredictionsController < ApplicationController
 
   private
 
-  # OPENAI
+  # /**********
+  #  * OPENAI *
+  #  **********/
   def generate_prediction(name, age, zodiac_sign)
-    # populate prompt template with name, age, and zodiac sign
+    # Populate prompt template with name, age, and zodiac sign
     prompt = ERB.new(OPENAI_CONFIG[:prompt]).result(binding)
+    prompt = add_inspiration(prompt) unless inspiration?
+    logger.info("INFO: user prompt: #{prompt}")
 
-    # instantiate openai object with api key from env variable
+    # Run the request and get the response
     openai = OpenAI::Client.new(access_token: ENV['OPENAI_API_KEY'])
-
-    # run the request and get the response
     response = openai.chat(
       parameters: {
         model: OPENAI_CONFIG[:model],
@@ -62,7 +76,31 @@ class PredictionsController < ApplicationController
     response.dig('choices', 0, 'message', 'content')
   end
 
-  # ANONYIMIZE
+  # Add inspiration examples to the prompt
+  def add_inspiration(prompt)
+    inspiration_subprompt = ERB.new(OPENAI_CONFIG[:inspirations_subprompt]).result(binding)
+    prompt += "\n#{inspiration_subprompt}\n"
+    sample_size = rand(2..5)
+    inspiration_samples = get_random_samples(sample_size)
+    inspiration_samples.each_with_index do |sample, index|
+      prompt += "- Exemple #{index + 1}: #{sample}\n"
+    end
+    prompt
+  end
+
+  # Check if inspiration should be included
+  def inspiration?
+    rand(1..10) <= 2 # 20% chance of inspiration being true
+  end
+
+  # Get random samples from the database
+  def get_random_samples(sample_size)
+    Prediction.order(Arel.sql('RANDOM()')).limit(sample_size).pluck(:text)
+  end
+
+  # /**************
+  #  * ANONYIMIZE *
+  #  **************/
   def anonymize_prediction(prediction_text)
     anonymized_text = prediction_text.gsub(/#{@name.capitalize}/, 'xxxx')
     anonymized_text.gsub!(/#{@age}/, 'yyyy')
@@ -70,7 +108,9 @@ class PredictionsController < ApplicationController
     anonymized_text
   end
 
-  # SESSION
+  # /***********
+  #  * SESSION *
+  #  ***********/
   def save_user_information
     session[:user_name] = params[:name]
     session[:user_age] = params[:age]
