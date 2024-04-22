@@ -11,6 +11,10 @@ header {
   text-shadow: rgb(7, 7, 6) 1px 0 10px;
 }
 
+header a {
+  text-decoration: none;
+  color: inherit;
+}
 /* Style header text */
 /* .header-text {
   margin-right: 20px; 

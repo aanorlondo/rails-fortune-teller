@@ -1,0 +1,4 @@
+L'utilisateur <%= name %>, agé de <%= age %> ans et avec le signe du zodiaque du <%= zodiac_sign %>, te demande de lui prédire son avenir.
+Propose-lui également un titre de musique à écouter ainsi qu'un film à regarder (la musique et le film devront être en lien avec la prédiction).
+ta réponse doit être ludique, originale et drôle, utilise du second degré et sois imprévisible.
+Utilise un langage jeune et actuel, ne sois pas trop formel.

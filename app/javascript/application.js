@@ -31,8 +31,11 @@ function displayError() {
 function disableRatingButtonsWhenAlreadyRated() {
   const message = "Hey! Tu as déjà noté cette prediction ;)";
   const likeButton = document.querySelector("button[value='positive']");
-  likeButton.addEventListener("mouseover", function (event) {
+  console.log(likeButton);
+  likeButton.addEventListener("mouseenter", function (event) {
+    console.log(event);
     if (event.target.disabled) {
+      console.log("here");
       event.target.style.cursor = "not-allowed";
       event.target.title = message;
     }

@@ -18,7 +18,8 @@ class PredictionsController < ApplicationController
     session[:rated_positive] = false
     redirect_to predictions_show_path
   rescue StandardError => e
-    flash.now[:error] = "OpenAPI Error: #{e.message}. Check your API Key and try again."
+    message = "OpenAPI Error: #{e.message}. Check the configuration."
+    flash.now[:error] = message
     render :index
   end
 
@@ -40,9 +41,10 @@ class PredictionsController < ApplicationController
       Prediction.create(text: anonymized_prediction_text)
       session[:rated_positive] = true
     end
-    redirect_to root_path
   rescue StandardError => e
     flash.now[:error] = "Error: #{e.message}. Please try again later."
+  ensure
+    redirect_to root_path
   end
 
   # /***************************
@@ -61,10 +63,10 @@ class PredictionsController < ApplicationController
   def generate_prediction(name, age, zodiac_sign)
     # Populate prompt template with name, age, and zodiac sign
     prompt = ERB.new(OPENAI_CONFIG[:prompt]).result(binding)
-    prompt = add_inspiration(prompt) unless inspiration?
-    logger.info("INFO: user prompt: #{prompt}")
+    prompt = add_inspiration(prompt) if inspiration?
 
     # Run the request and get the response
+    logger.info("INFO - used prompt: #{prompt}")
     openai = OpenAI::Client.new(access_token: ENV['OPENAI_API_KEY'])
     response = openai.chat(
       parameters: {
@@ -78,9 +80,12 @@ class PredictionsController < ApplicationController
 
   # Add inspiration examples to the prompt
   def add_inspiration(prompt)
+    # get configs
     inspiration_subprompt = ERB.new(OPENAI_CONFIG[:inspirations_subprompt]).result(binding)
+    # setup
     prompt += "\n#{inspiration_subprompt}\n"
-    sample_size = rand(2..5)
+    sample_size = rand(OPENAI_CONFIG[:inspirations_sample_size_min]..OPENAI_CONFIG[:inspirations_sample_size_max])
+    # get sample and extend prompt
     inspiration_samples = get_random_samples(sample_size)
     inspiration_samples.each_with_index do |sample, index|
       prompt += "- Exemple #{index + 1}: #{sample}\n"
@@ -90,7 +95,7 @@ class PredictionsController < ApplicationController
 
   # Check if inspiration should be included
   def inspiration?
-    rand(1..10) <= 2 # 20% chance of inspiration being true
+    rand(1..10) <= OPENAI_CONFIG[:inspirations_probability]
   end
 
   # Get random samples from the database
