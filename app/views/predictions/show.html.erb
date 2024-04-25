@@ -5,7 +5,7 @@
   </div>
   <div class="rating-buttons">
     <h3>Qu'en penses-tu ?</h3>
-    <%= form_tag(predictions_rate_path, method: :post, id:"show_form") do %>
+    <%= form_tag(fortuneteller_predictions_rate_path, method: :post, id:"show_form") do %>
       <%= hidden_field_tag :prediction_text, @prediction %>
       <%= button_tag "J'aime", type: 'submit', name: 'rating', value: 'positive', disabled: session[:rated_positive] %>
       <%= button_tag "Pas top", type: 'submit', name: 'rating', value: 'negative' %>

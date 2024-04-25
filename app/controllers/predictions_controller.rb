@@ -16,7 +16,7 @@ class PredictionsController < ApplicationController
     @prediction = generate_prediction(@name, @age, @zodiac_sign)
     session[:prediction] = @prediction
     session[:rated_positive] = false
-    redirect_to predictions_show_path
+    redirect_to fortuneteller_predictions_show_path
   rescue StandardError => e
     message = "OpenAPI Error: #{e.message}. Check the configuration."
     flash.now[:error] = message
@@ -44,7 +44,7 @@ class PredictionsController < ApplicationController
   rescue StandardError => e
     flash.now[:error] = "Error: #{e.message}. Please try again later."
   ensure
-    redirect_to root_path
+    redirect_to fortuneteller_path
   end
 
   # /***************************

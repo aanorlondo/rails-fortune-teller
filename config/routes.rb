@@ -1,8 +1,8 @@
-# config/routes.rb
 Rails.application.routes.draw do
   root 'predictions#index'
-  post '/predictions/create', to: 'predictions#create'
-  post '/predictions/rate', to: 'predictions#rate'
-  get '/predictions/list', to: 'predictions#list'
-  get '/predictions/show', to: 'predictions#show'
+  get '/fortuneteller', to: 'predictions#index'
+  post '/fortuneteller/predictions/create', to: 'predictions#create'
+  post '/fortuneteller/predictions/rate', to: 'predictions#rate'
+  get '/fortuneteller/predictions/list', to: 'predictions#list'
+  get '/fortuneteller/predictions/show', to: 'predictions#show'
 end
